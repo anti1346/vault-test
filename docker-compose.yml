@@ -1,0 +1,25 @@
+version: '3'
+services:
+  ssh-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.ssh
+    ports:
+      - 22:22
+    volumes:
+      - ./ssh:/etc/ssh
+    networks:
+      - app-network
+  vault:
+    image: vault
+    ports:
+      - 8200:8200
+    environment:
+      - VAULT_DEV_ROOT_TOKEN_ID=myroottoken
+      - VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:8200
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
