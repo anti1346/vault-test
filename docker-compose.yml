@@ -9,23 +9,23 @@ services:
     container_name: ssh-server
     hostname: ssh-server
     volumes:
-      - ./ssh:/etc/ssh
+      - ./ssh:/root/.ssh
     ports:
       - 22:22
     networks:
       - app-network
 
-  # vault:
-  #   image: vault:latest
-  #   container_name: vault
-  #   hostname: vault
-  #   environment:
-  #     - VAULT_DEV_ROOT_TOKEN_ID=myroottoken
-  #     - VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:8200
-  #   ports:
-  #     - 8200:8200
-  #   networks:
-  #     - app-network
+  vault:
+    image: vault:latest
+    container_name: vault
+    hostname: vault
+    environment:
+      - VAULT_DEV_ROOT_TOKEN_ID=myroottoken
+      - VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:8200
+    ports:
+      - 8200:8200
+    networks:
+      - app-network
 
 networks:
   app-network:
