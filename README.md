@@ -15,3 +15,11 @@ ssh-keygen -f ssh/id_rsa -N ''
 ```
 docker-compose up -d
 ```
+
+##### 테스트
+```
+apk add curl
+```
+```
+curl http://localhost:8200/v1/sys/init
+```
