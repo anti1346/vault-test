@@ -6,6 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile.ssh
     image: vault-ssh-server:latest
+    # platform: linux/arm64/v8
     container_name: ssh-server
     restart: unless-stopped
     hostname: ssh-server
@@ -18,6 +19,7 @@ services:
 
   vault:
     image: vault:latest
+    # platform: linux/arm64/v8
     container_name: vault
     restart: unless-stopped
     hostname: vault

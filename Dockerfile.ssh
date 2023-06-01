@@ -25,7 +25,8 @@ RUN apt update \
     && mkdir /var/run/sshd \
     && apt-get clean autoclean \
     && apt-get autoremove --yes \
-    && rm -rf /var/lib/apt/lists/* /var/lib/dpkg/info /tmp/* /var/tmp/*
+    && rm -rf /var/lib/apt/lists/* /var/lib/dpkg/info /tmp/* /var/tmp/* \
+    && apt upgrade -qq -y
 
 # Configure SSH server
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config \
